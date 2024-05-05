@@ -18,8 +18,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Routes
-// const authRoute = require("./routes/authRoute");
 import authRoute from "./routes/authRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 // mongo database connection
 dbConnection();
@@ -33,6 +33,7 @@ app.use(cookieParser());
 
 // App routes
 app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
 
 // App Error Handler
 app.use(notFound);

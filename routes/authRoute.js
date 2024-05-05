@@ -3,12 +3,12 @@ import { register, loginUser, handleRefreshtoken, logout, updatePassword, forgot
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
+router.get('/logout', authMiddleware, logout);
+router.get('/refresh', handleRefreshtoken);
+
 router.post('/register', register);
 router.post('/login', loginUser);
 router.post('/forgot-password-token', forgotPasswordToken);
-
-router.get('/logout', authMiddleware, logout);
-router.get('/refresh', handleRefreshtoken);
 
 router.put('/password', authMiddleware, updatePassword);
 router.put('/reset-password/:token', resetPassword);
